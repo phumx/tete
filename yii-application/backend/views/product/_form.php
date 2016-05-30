@@ -34,5 +34,10 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
-
+    <form action="/site/upload" class="dropzone">
+        <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
+        <div class="fallback">
+            <input name="file" type="file" multiple />
+        </div>
+    </form>
 </div>

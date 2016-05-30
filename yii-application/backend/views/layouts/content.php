@@ -1,7 +1,6 @@
 <?php
 use yii\widgets\Breadcrumbs;
 use backend\widgets\Alert;
-
 ?>
 <div class="content-wrapper">
     <section class="content-header">
@@ -20,7 +19,6 @@ use backend\widgets\Alert;
                 } ?>
             </h1>
         <?php } ?>
-
         <?=
         Breadcrumbs::widget(
             [
