@@ -65,6 +65,9 @@ class RbacController extends Controller
         $auth->addChild($admin, $author);
         $auth->addChild($admin, $updatePost);
 
+        $auth->assign($author, 2);
+        $auth->assign($admin, 1);
+
 
 // ... add permissions as children of $admin ...
     }
