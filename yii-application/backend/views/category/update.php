@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Categories'), 'ur
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('common', 'Update');
 ?>
-<div class="category-update">
+<div class="category-update info-box box box-default pad20">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

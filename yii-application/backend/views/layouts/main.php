@@ -36,9 +36,7 @@ if (Yii::$app->controller->action->id === 'login') {
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
-        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
     </head>
     <body class="hold-transition sidebar-collapse <?php  echo backend\assets\AdminLteHelper::skinClass() ?> sidebar-mini">
     <?php $this->beginBody() ?>

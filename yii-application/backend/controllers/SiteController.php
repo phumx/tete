@@ -76,17 +76,16 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
 
     public function actionUpload()
     {
         if (!empty($_FILES)) {
-            $tempFile = $_FILES['file']['tmp_name'];          //3
-            $targetPath = Yii::getAlias('@uploadPath') . DIRECTORY_SEPARATOR;  //4
-            $targetFile = $targetPath . $_FILES['file']['name'];  //5
-            move_uploaded_file($tempFile, $targetFile); //6
+            $tempFile = $_FILES['file']['tmp_name'];
+            $targetPath = Yii::getAlias('@uploadPath');
+            $targetFile = $targetPath . $_FILES['file']['name'];
+            move_uploaded_file($tempFile, $targetFile);
 
         }
     }

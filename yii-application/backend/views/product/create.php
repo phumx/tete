@@ -10,7 +10,7 @@ $this->title = Yii::t('common', 'Create Product');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Products'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-create">
+<div class="product-create info-box box box-default pad20">
 
     <?= $this->render('_form', [
         'model' => $model,

@@ -1,12 +1,57 @@
 .skin-black .main-header {
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 1px rgb(103, 81, 81) !important;
 }
-#dashbroad .info-box-icon{
+
+#dashbroad .info-box-icon {
     width: 10px !important;
+    height: 60px;
 }
-#dashbroad .info-box-content{
+
+#dashbroad .info-box {
+    min-height: 60px;
+
+}
+
+#dashbroad .info-box-content {
     padding: 5px 10px;
     margin-left: 15px;
     color: black;
+}
+
+.pad20 {
+    padding: 20px;
+}
+
+.btn-d73925 {
+    background-color: #d73925 !important;
+}
+
+.btn-999999 {
+    background-color: #999 !important;
+}
+
+.btn-337ab7 {
+    background-color: #337AB7 !important;
+}
+
+.btn-3f51b5 {
+    background-color: #3F51B5 !important;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.grid-view table thead a{
+    font-size: 18px;
+}
+.grid-view table thead{
+    background-color: #eeeeee;
+}
+.product-search input{
+    max-width: 50%;
+}
+.box.box-default{
+    border-top-color: #DD4B39 !important;
 }
