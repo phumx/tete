@@ -9,5 +9,10 @@ return [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'd-M-Y',
+            'datetimeFormat' => 'd/m/Y H:i:s',
+            'timeFormat' => 'H:i:s', ],
     ],
 ];
