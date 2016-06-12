@@ -30,9 +30,6 @@ class AuthItemChild extends \yii\db\ActiveRecord
     {
         return [
             [['parent', 'child'], 'required'],
-            [['parent', 'child'], 'string', 'max' => 64],
-            [['parent'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::className(), 'targetAttribute' => ['parent' => 'name']],
-            [['child'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::className(), 'targetAttribute' => ['child' => 'name']],
         ];
     }
 
@@ -52,7 +49,7 @@ class AuthItemChild extends \yii\db\ActiveRecord
      */
     public function getParent0()
     {
-        return $this->hasOne(AuthItem::className(), ['name' => 'parent']);
+        return $this->hasMany(AuthItem::className(), ['name' => 'parent']);
     }
 
     /**
@@ -60,6 +57,22 @@ class AuthItemChild extends \yii\db\ActiveRecord
      */
     public function getChild0()
     {
-        return $this->hasOne(AuthItem::className(), ['name' => 'child']);
+        return $this->hasMany(AuthItem::className(), ['name' => 'child']);
     }
+
+
+    public function save($runValidation = true, $attributeNames = null)
+    {
+
+        $parent = $this->parent;
+        Yii::$app->db->createCommand()->delete('auth_item_child', ['parent'=>$parent])->execute();
+        $childs = $this->child;
+        if (is_array($childs)){
+            foreach ($childs as $item) {
+                Yii::$app->db->createCommand()->insert('auth_item_child', ['parent'=>$parent, 'child'=>$item])->execute();
+            }
+        }
+
+    }
+
 }

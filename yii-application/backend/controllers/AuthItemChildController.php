@@ -45,19 +45,6 @@ class AuthItemChildController extends Controller
     }
 
     /**
-     * Displays a single AuthItemChild model.
-     * @param string $parent
-     * @param string $child
-     * @return mixed
-     */
-    public function actionView($parent, $child)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($parent, $child),
-        ]);
-    }
-
-    /**
      * Creates a new AuthItemChild model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -66,8 +53,10 @@ class AuthItemChildController extends Controller
     {
         $model = new AuthItemChild();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'parent' => $model->parent, 'child' => $model->child]);
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->save();
+            Yii::$app->session->setFlash('success', 'Updated success');
+            return $this->redirect(['update', 'parent' => $model->parent]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,32 +71,24 @@ class AuthItemChildController extends Controller
      * @param string $child
      * @return mixed
      */
-    public function actionUpdate($parent, $child)
+    public function actionUpdate($parent)
     {
-        $model = $this->findModel($parent, $child);
+        $modelX = $this->findModel($parent);
+        $model = new AuthItemChild();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'parent' => $model->parent, 'child' => $model->child]);
+        if ($model->load(Yii::$app->request->post())  ) {
+            $model->save();
+            Yii::$app->session->setFlash('success', 'Updated success');
+            return $this->redirect(['update', 'parent' => $model->parent]);
         } else {
+
             return $this->render('update', [
                 'model' => $model,
+                'x'=>$modelX
             ]);
         }
     }
 
-    /**
-     * Deletes an existing AuthItemChild model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $parent
-     * @param string $child
-     * @return mixed
-     */
-    public function actionDelete($parent, $child)
-    {
-        $this->findModel($parent, $child)->delete();
-
-        return $this->redirect(['index']);
-    }
 
     /**
      * Finds the AuthItemChild model based on its primary key value.
@@ -117,9 +98,9 @@ class AuthItemChildController extends Controller
      * @return AuthItemChild the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($parent, $child)
+    protected function findModel($parent)
     {
-        if (($model = AuthItemChild::findOne(['parent' => $parent, 'child' => $child])) !== null) {
+        if (($model = AuthItemChild::findAll(['parent' => $parent])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

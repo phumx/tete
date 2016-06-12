@@ -15,7 +15,13 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 <div class="auth-item-child-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php $model->parent = $x[0]->parent;
+            foreach($x as $item){
+                $arrChild[]=$item['child'];
+            };
+            $model->child =$arrChild;
 
+    ?>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

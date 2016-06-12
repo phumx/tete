@@ -2,6 +2,8 @@
 
 
 use yii\helpers\Html;
+use common\widgets\Alert;
+
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -52,7 +54,7 @@ if (Yii::$app->controller->action->id === 'login') {
             ['directoryAsset' => $directoryAsset]
         )
         ?>
-
+        <?= Alert::widget() ?>
         <?= $this->render(
             'content',
             ['content' => $content, 'directoryAsset' => $directoryAsset]
